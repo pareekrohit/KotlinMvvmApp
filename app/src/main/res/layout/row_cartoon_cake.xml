@@ -10,14 +10,17 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen200dp"
-        app:cardCornerRadius="@dimen/dimen0dp"
+        app:cardCornerRadius="@dimen/dimen5dp"
+        android:layout_marginHorizontal="@dimen/dimen10dp"
+        android:layout_marginVertical="@dimen/dimen5dp"
         app:cardElevation="@dimen/dimen2dp"
-        app:cardMaxElevation="@dimen/dimen0dp">
+        >
 
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/dimen10dp"
             android:gravity="center">
 
             <ImageView
@@ -53,12 +56,13 @@
                 android:id="@+id/TvCakeName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
                 android:layout_alignParentBottom="true"
-                android:drawablePadding="@dimen/dimen7dp"
+                android:layout_centerHorizontal="true"
                 android:layout_marginStart="@dimen/dimen10dp"
                 android:layout_marginEnd="@dimen/dimen10dp"
+                android:drawablePadding="@dimen/dimen7dp"
                 android:text="Name"
+                android:layout_marginTop="@dimen/dimen5dp"
                 android:textColor="@color/black"
                 android:textSize="@dimen/text_size15sp" />
 

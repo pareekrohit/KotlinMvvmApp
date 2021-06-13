@@ -10,10 +10,13 @@ import java.util.*
 interface ApiInterface {
 
     @GET(ApiConstant.CAKE_LIST_ENDPOINT)
-    suspend fun getCakeList(@Query("category_id") categoryID: String): Response<SubCategoryCakesResponse>
+    suspend fun getCakeList(
+        @Query("category_id") categoryID: String
+    ): SubCategoryCakesResponse
+
 
     @GET(ApiConstant.LOGIN_ENDPOINT)
-    suspend fun login(@Body map: HashMap<String,Any>): Response<SubCategoryCakesResponse>
+    suspend fun login(@Body map: HashMap<String, Any>): SubCategoryCakesResponse
 
 
 }

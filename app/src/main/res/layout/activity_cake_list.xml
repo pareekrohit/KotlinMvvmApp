@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tool="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/ll_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,22 +11,50 @@
         android:id="@+id/app_bar"
         layout="@layout/toolbar_regular_cake" />
 
-    <TextView
-        android:id="@+id/TvTheme"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:id="@+id/rlTop"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/app_bar"
-        android:layout_marginStart="@dimen/dimen10dp"
-        android:layout_marginTop="@dimen/dimen15dp"
-        android:layout_marginEnd="@dimen/dimen10dp"
-        android:text="@string/select_themes"
-        android:textColor="@color/black"
-        android:textSize="@dimen/text_size15sp" />
+        android:layout_below="@id/app_bar">
+
+        <TextView
+            android:id="@+id/TvTheme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginStart="@dimen/dimen10dp"
+            android:layout_marginTop="@dimen/dimen15dp"
+            android:layout_marginEnd="@dimen/dimen10dp"
+            android:text="@string/select_themes"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size15sp" />
+
+        <EditText
+            android:id="@+id/etCakeId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginHorizontal="@dimen/dimen10dp"
+            android:layout_toStartOf="@id/btnGo"
+            android:layout_toEndOf="@id/TvTheme"
+            android:hint="@string/enter_cake_id"
+            android:inputType="number"
+            tools:ignore="Autofill" />
+
+        <Button
+            android:id="@+id/btnGo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="@dimen/dimen10dp"
+            android:text="@string/go" />
+
+    </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/TvTheme">
+        android:layout_below="@id/rlTop">
 
 
         <androidx.recyclerview.widget.RecyclerView
@@ -35,7 +64,8 @@
             android:layout_marginTop="@dimen/dimen4dp"
             android:paddingStart="@dimen/dimen6dp"
             android:paddingEnd="@dimen/dimen6dp"
-             />
+            tool:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/row_cartoon_cake" />
 
 
         <TextView
@@ -50,5 +80,12 @@
 
     </RelativeLayout>
 
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
 
 </RelativeLayout>

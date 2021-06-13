@@ -10,6 +10,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 import com.example.kotlinappwithmvvm.data.network.Resource
+import com.example.kotlinappwithmvvm.data.network.model.SubCategoryCakesResponse
 
 /**
  * 1)Use ViewModel in activity as ViewModelProvider(this).get(CakeListViewModel::Class.java)
@@ -30,29 +31,21 @@ class CakeListViewModel @Inject constructor(
 
     /*Simplied coding*/
 
-    private val _cakeList: MutableLiveData<Resource<List<Product>>> = MutableLiveData()
-    val cakeList: LiveData<Resource<List<Product>>>
+    private val _cakeList: MutableLiveData<Resource<SubCategoryCakesResponse>> = MutableLiveData()
+    val cakeList: LiveData<Resource<SubCategoryCakesResponse>>
         get() = _cakeList
 
-    /*private val _loginResponse: MutableLiveData<Resource<LoginResponse>> = MutableLiveData()
-    val loginResponse: LiveData<Resource<LoginResponse>>
-        get() = _loginResponse*/
 
-    suspend fun getCakeList(cakeID: String) {
-        viewModelScope.launch {
-            _cakeList.value = Resource.Loading
-            _cakeList.value = repository.getCakeList(cakeID)
-            /*val cakeListResponse = repository.getCakeList(cakeID)*/
-        }
+    suspend fun getCakeList(
+        cakeID: String
+    ) = viewModelScope.launch {
+        _cakeList.value = Resource.Loading
+        _cakeList.value = repository.getCakeList(cakeID)
     }
 
 
-    /*fun login(
-        email: String,
-        password: String
-    ) = viewModelScope.launch {
-        _loginResponse.value = Resource.Loading
-        _loginResponse.value = repository.login(email, password)
+    /*suspend fun saveAccessTokens(accessToken: String, refreshToken: String) {
+        repository.saveAccessTokens(accessToken, refreshToken)
     }*/
 
 

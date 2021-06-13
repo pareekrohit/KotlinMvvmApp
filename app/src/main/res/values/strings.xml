@@ -188,5 +188,7 @@
 
     <string name="refund_policy">Refund Policy</string>
     <string name="privacy_policy">Privacy Policy</string>
+    <string name="enter_cake_id">Enter cake id</string>
+    <string name="go">Go</string>
 
 </resources>
