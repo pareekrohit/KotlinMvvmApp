@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.appbar.AppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/appBarLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_main"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:gravity="center"
+        app:contentInsetStart="0dp"
+        app:contentInsetStartWithNavigation="0dp"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:titleTextColor="@color/white">
+
+
+        <ImageView
+            android:id="@+id/IvBack"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:clickable="true"
+            android:focusable="true"
+            android:paddingStart="@dimen/dimen16dp"
+            android:paddingEnd="@dimen/dimen6dp"
+            android:src="@drawable/ic_back_arrow"
+            tools:ignore="ContentDescription" />
+
+
+        <TextView
+            android:id="@+id/TvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="Cake List"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size16sp" />
+
+        <FrameLayout
+            android:id="@+id/fl_cart"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:paddingEnd="@dimen/dimen5dp"
+            android:paddingStart="@dimen/dimen0dp"
+            android:layout_gravity="end">
+
+            <ImageView
+                android:id="@+id/IvCart"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="end"
+                android:paddingStart="@dimen/dimen10dp"
+                android:paddingEnd="@dimen/dimen10dp"
+                android:src="@drawable/ic_cart"
+                tools:ignore="ContentDescription" />
+
+        </FrameLayout>
+
+    </androidx.appcompat.widget.Toolbar>
+
+</com.google.android.material.appbar.AppBarLayout>
