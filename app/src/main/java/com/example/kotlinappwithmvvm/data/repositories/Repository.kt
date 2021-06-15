@@ -24,20 +24,49 @@ class Repository @Inject constructor(
 ) : SafeApiRequest() {
 
 
-    suspend fun getCakeList(
-        cakeID: String
-    ) = safeApiCall {
-        api.getCakeList(cakeID)
-    }
+    suspend fun getCakeList(cakeID: String) =
+        safeApiCall {
+            api.getCakeList(cakeID)
+        }
 
 
     suspend fun getCakeList(): LiveData<List<Product>> {
         return dao.getCakeList();
     }
 
-    suspend fun insertCakeList(list: List<Product>){
+    suspend fun insertCakeList(list: List<Product>) {
         dao.insertCakesList(list)
     }
+
+
+    /**For offline support ref:developer.android.com*/
+    /*fun getUser(userId: String): Flow<User> {
+       refreshUser(userId)
+       // Returns a Flow object directly from the database.
+       return userDao.load(userId)
+   }
+
+   private suspend fun refreshUser(userId: String) {
+       // Check if user data was fetched recently.
+       val userExists = userDao.hasUser(FRESH_TIMEOUT)
+       if (!userExists) {
+           // Refreshes the data.
+           val response = webservice.getUser(userId)
+
+           // Check for errors here.
+
+           // Updates the database. Since `userDao.load()` returns an object of
+           // `Flow<User>`, a new `User` object is emitted every time there's a
+           // change in the `User`  table.
+           userDao.save(response.body()!!)
+       }
+   }
+
+   companion object {
+       val FRESH_TIMEOUT = TimeUnit.DAYS.toMillis(1)
+   }*/
+
+
 
 
 /*

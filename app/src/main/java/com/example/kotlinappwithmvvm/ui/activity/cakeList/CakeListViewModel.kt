@@ -31,7 +31,8 @@ class CakeListViewModel @Inject constructor(
 
     /*Simplied coding*/
 
-    private val _cakeList: MutableLiveData<Resource<SubCategoryCakesResponse>> = MutableLiveData()
+    /*private val _cakeList: MutableLiveData<Resource<SubCategoryCakesResponse>> = MutableLiveData()*/
+    private val _cakeList = MutableLiveData<Resource<SubCategoryCakesResponse>>()
     val cakeList: LiveData<Resource<SubCategoryCakesResponse>>
         get() = _cakeList
 
@@ -42,8 +43,6 @@ class CakeListViewModel @Inject constructor(
         _cakeList.value = Resource.Loading
         _cakeList.value = repository.getCakeList(cakeID)
     }
-
-
 
 
     /*suspend fun saveAccessTokens(accessToken: String, refreshToken: String) {

@@ -59,7 +59,10 @@ class CakeListActivity : BaseActivity(), View.OnClickListener, OnRecyclerViewCli
             adapter.notifyDataSetChanged()
         })*/
 
-
+        /**
+         * For fragment use -> viewLifecycleOwner in observe(viewLifecycleOwner) method
+         *
+         * */
         viewModel.cakeList.observe(this) {
             binding.progressBar.visible(it is Resource.Loading)
             when (it) {
