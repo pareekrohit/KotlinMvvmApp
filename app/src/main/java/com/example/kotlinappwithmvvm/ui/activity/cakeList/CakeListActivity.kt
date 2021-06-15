@@ -65,11 +65,6 @@ class CakeListActivity : BaseActivity(), View.OnClickListener, OnRecyclerViewCli
             when (it) {
                 is Resource.Success -> {
                     lifecycleScope.launch {
-                        /*viewModel.saveAccessTokens(
-                            it.value.user.access_token!!,
-                            it.value.user.refresh_token!!
-                        )
-                        requireActivity().startNewActivity1(HomeActivity::class.java)*/
                         Toast.makeText(
                             context,
                             "List size ${it.value.products.size}",
@@ -111,15 +106,12 @@ class CakeListActivity : BaseActivity(), View.OnClickListener, OnRecyclerViewCli
 
     private fun getCakeList() {
         binding.progressBar.visible(true)
+        val id = binding.etCakeId.text.toString()
+        if (id.isNotEmpty())
+            viewModel.getCakeList(id)
+        else
+            Toast.makeText(context, "id should not be empty", Toast.LENGTH_SHORT).show()
 
-        Coroutines.main {
-            val id = binding.etCakeId.text.toString()
-
-            if (id.isNotEmpty())
-                viewModel.getCakeList(id)
-            else
-                Toast.makeText(context, "id should not be empty", Toast.LENGTH_SHORT).show()
-        }
     }
 
     override fun onRecyclerItemClick(pos: Int, tag: String) {

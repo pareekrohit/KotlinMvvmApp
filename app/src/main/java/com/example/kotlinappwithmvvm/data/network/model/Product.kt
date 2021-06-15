@@ -1,5 +1,9 @@
 package com.example.kotlinappwithmvvm.data.network.model
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+
 data class Product(
     val category_id: Int,
     val category_name: String,

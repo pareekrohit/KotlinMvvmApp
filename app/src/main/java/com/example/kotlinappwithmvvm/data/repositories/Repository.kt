@@ -1,5 +1,9 @@
 package com.example.kotlinappwithmvvm.data.repositories
 
+import androidx.lifecycle.LiveData
+import androidx.room.Insert
+import com.example.kotlinappwithmvvm.data.db.Dao
+import com.example.kotlinappwithmvvm.data.db.entity.Product
 import com.example.kotlinappwithmvvm.data.network.ApiInterface
 import com.example.kotlinappwithmvvm.data.network.Resource
 import com.example.kotlinappwithmvvm.data.network.model.SubCategoryCakesResponse
@@ -15,7 +19,8 @@ import javax.inject.Inject
 
 
 class Repository @Inject constructor(
-    private val api: ApiInterface
+    private val api: ApiInterface,
+    private val dao: Dao
 ) : SafeApiRequest() {
 
 
@@ -23,6 +28,15 @@ class Repository @Inject constructor(
         cakeID: String
     ) = safeApiCall {
         api.getCakeList(cakeID)
+    }
+
+
+    suspend fun getCakeList(): LiveData<List<Product>> {
+        return dao.getCakeList();
+    }
+
+    suspend fun insertCakeList(list: List<Product>){
+        dao.insertCakesList(list)
     }
 
 

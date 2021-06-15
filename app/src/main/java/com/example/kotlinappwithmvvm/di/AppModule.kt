@@ -1,6 +1,8 @@
 package com.example.kotlinappwithmvvm.di
 
 import android.content.Context
+import com.example.kotlinappwithmvvm.data.db.AppDB
+import com.example.kotlinappwithmvvm.data.db.Dao
 import com.example.kotlinappwithmvvm.data.network.ApiInterface
 import com.example.kotlinappwithmvvm.data.network.RetrofitClient
 import dagger.Module
@@ -22,8 +24,15 @@ object AppModule {
         return retrofitClient.buildApi(ApiInterface::class.java, context)
     }
 
+    @Provides
+    fun provideDao(
+        @ApplicationContext context: Context
+    ): Dao {
+        return AppDB.getDatabase(context).getDao()
+    }
 
-
+    @Provides
+    fun provideAppDB() = AppDB
 
 
 }

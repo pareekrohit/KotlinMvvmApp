@@ -36,12 +36,14 @@ class CakeListViewModel @Inject constructor(
         get() = _cakeList
 
 
-    suspend fun getCakeList(
+    fun getCakeList(
         cakeID: String
     ) = viewModelScope.launch {
         _cakeList.value = Resource.Loading
         _cakeList.value = repository.getCakeList(cakeID)
     }
+
+
 
 
     /*suspend fun saveAccessTokens(accessToken: String, refreshToken: String) {
